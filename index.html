@@ -64,11 +64,12 @@
 <div class="nd-pageheader">
  <div class="container">
  <p class="lead" style="font-size:30px">
-    <b>QuadricFormer: Scene as Superquadrics <br> for 3D Semantic Occupancy Prediction</a></b>
+    <b>QuadricFormer: Scene as Superquadrics for <br> 3D Semantic Occupancy Prediction</a></b>
   <address style="font-size: 110%;">
     <nobr><a href="https://scholar.google.com/citations?user=11kh6C4AAAAJ&hl=en&oi=ao">Sicheng Zuo</a><sup>1,*</sup>,</nobr>
     <nobr><a href="https://wzzheng.net/">Wenzhao Zheng</a><sup>1,*,†</sup>,</nobr>
     <nobr>Xiaoyong Han<sup>1,*</sup>,</nobr>
+    <br>
     <nobr>Longchao Yang<sup>2</sup>,</nobr>
     <nobr>Yong Pan<sup>2</sup>,</nobr>
     <nobr><a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup>1</sup>
@@ -105,7 +106,7 @@
 </p>
 <p><b>Overview of our contributions.</b> 
   We propose a probabilistic superquadric mixture model for efficient 3D occupancy prediction in autonomous driving scenes. 
-  Unlike previous methods based on dense voxels or ellipsoidal Gaussians, we leverage geometrically expressive superquadrics as scene primitives to effectively capture the diverse structures of real-world objects with fewer primitives.
+  Unlike previous methods based on dense voxels or ellipsoidal Gaussians, we leverage geometrically expressive superquadrics for efficient scene representation, which can effectively capture the diverse structures of real-world objects with much fewer primitives.
   Experiments on the nuScenes dataset show that QuadricFormer achieves state-of-the-art accuracy with superior efficiency compared to existing methods.
 </p>
 
@@ -120,16 +121,15 @@
   }
 </style>
 
-<h2>Geometrically Expressive Superquadrics</h2>
-<hr>
-<div class="flex-container">
-  <img src="assets/quadric.png" width="28%">
-  <p> 
-    Superquadrics are a powerful family of parameterized surfaces that can represent various geometric shapes. 
-    With just a few shape parameters, superquadrics can generate shapes ranging from basic ellipsoids, cuboids, and cylinders to more complex shapes with rounded corners, star-like profiles, and smooth transitions between them. 
-    This geometric flexibility allows them to capture complex structures with significantly fewer primitives than traditional representations (like ellipsoidal Gaussians), highlighting their superior modeling efficiency and expressive power for 3D scene understanding tasks.
+<h2>Geometrically Expressive Superquadrics</h2><hr>
+<p> 
+  Superquadrics are a powerful family of parameterized surfaces that can represent various geometric shapes. 
+  With just a few shape parameters, superquadrics can generate shapes ranging from basic ellipsoids, cuboids, and cylinders to more complex shapes with rounded corners, star-like profiles, and smooth transitions between them. 
+  This geometric flexibility allows them to capture complex structures with significantly fewer primitives than traditional representations (like ellipsoidal Gaussians), highlighting their superior modeling efficiency and expressive power for 3D scene understanding tasks.
   </p>
-</div>
+<p align="center">
+     <img src="assets/quadric.png" width="70%">
+</p>
 
 <h2>Scene as Superquadrics for 3D Occupancy Prediction</h2><hr>
 <p> 
@@ -147,14 +147,14 @@
 <p> 
   We propose a probabilistic superquadric mixture model for efficient 3D occupancy prediction in autonomous driving scenes. 
   Our QuadricFormer interprets each superquadric as an occupancy distribution with geometry priors and aggregates semantics via probabilistic mixture. 
-  Additionally, we design a pruning-and-splitting module to dynamically allocate superquadrics in occupied regions, enhancing modeling efficiency.
+  Additionally, we design a pruning-and-splitting module to dynamically allocate superquadrics in occupied regions, further enhancing modeling efficiency.
   <p>
 
 <p align="center">
      <img src="assets/framework.png" width="90%">
 </p>
 
-<h2>Experiments</h2><hr>
+<h2>Performance and Efficiency Comparison</h2><hr>
 <p> 
   QuadricFormer consistently outperforms prior methods in both 3D semantic occupancy prediction and computational efficiency. 
 Specifically, our method achieves the highest mIoU (up to 21.11) and IoU (up to 32.13), surpassing all Gaussian-based approaches.
@@ -167,49 +167,18 @@ In terms of efficiency, QuadricFormer significantly reduces both latency and mem
 
 <h2>Visualizations</h2><hr>
 <p> 
-  We visualize the position distributions of scene primitives using 1600 superquadrics versus 6400 Gaussians. 
-Gaussian-based methods require a dense arrangement of Gaussians throughout the entire 3D space to model the scene, leading to numerous redundant Gaussians and low modeling efficiency. 
+  We present visualizations of the predicted Quadrics and occupancy results, indicating that our model is able to predict high-fidelity shapes using Quadrics and achieves comprehensive occupancy results.
+  We also visualize the position distributions of scene primitives using 1600 superquadrics versus 6400 Gaussians. 
+Gaussian-based methods require a dense arrangement of Gaussians throughout the entire 3D space to model the scene accurately, leading to numerous redundant Gaussians and low modeling efficiency. 
 In contrast, our superquadric-based method learns well-structured spatial arrangements, enabling it to effectively model the scene structure with significantly fewer primitives.
   <p>
 
 <p align="center">
+     <img src="assets/imgocc.png" width="90%">
+</p>
+<p align="center">
      <img src="assets/pos.png" width="90%">
 </p>
-<!-- <h2>Results</h2><hr>
-
-<h4>Local Occupancy Prediction</h4><hr>
-
-We evaluate our local occupancy prediction module on the Occ-ScanNet dataset.
-The results indicate that our local occupancy prediction module outperforms state-of-the-art methods.
-
-<p></p>
-
-<p align="center">
-  <img src="img/local_tab.png" width="90%">
-</p>
-
-
-<h4>Embodied Occupancy Prediction</h4><hr>
-
-We splice the local occupancy obtained from our local occupancy prediction module to serve as the baseline and evaluate the performance of our EmbodiedOcc.
-It can be observed that our EmbodiedOcc exhibits superior prediction of the scene, which is achieved through the integration of different views.
-
-<p></p>
-
-<p align="center">
-  <img src="img/Embodied_Tab.png" width="90%">
-</p>
-
-<h4>Visualizations</h4><hr>
-
-We select two scenes to show the update of Gaussian memory and corresponding global occupancy with continuous exploration.
-As the Gaussians transition from random to increasingly ordered, the occupancy prediction of the current scene becomes more accurate and complete.
-
-<p></p>
-
-<p align="center">
-  <img src="img/global.png" width="90%">
-</p> -->
 
 
 
