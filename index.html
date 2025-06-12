@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+<title>EmbodiedOcc</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
+<link href="bootstrap.min.css" rel="stylesheet">
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
+<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet"> -->
+<link href="opensans.css" rel="stylesheet">
+<link rel="icon" href="images/logo3.png">
+<link href="style.css" rel="stylesheet">
+<style>
+  .container_2{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+  .collapsible {
+    background-color: #777;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+
+  .active, .collapsible:hover {
+    background-color: #555;
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+  }
+</style>
+
+<style>
+.paperthumb {
+  float:left; width: 120px; margin: 3px 10px 7px 0;
+}
+.paperdesc {
+  clear: both;
+}
+</style>
+</head>
+
+<body class="nd-docs">
+<div class="nd-pageheader">
+ <div class="container">
+ <p class="lead" style="font-size:30px">
+    <b>QuadricFormer: Scene as Superquadrics <br> for 3D Semantic Occupancy Prediction</a></b>
+  <address style="font-size: 110%;">
+    <nobr><a href="https://scholar.google.com/citations?user=11kh6C4AAAAJ&hl=en&oi=ao">Sicheng Zuo</a><sup>1,*</sup>,</nobr>
+    <nobr><a href="https://wzzheng.net/">Wenzhao Zheng</a><sup>1,*,†</sup>,</nobr>
+    <nobr>Xiaoyong Han<sup>1,*</sup>,</nobr>
+    <nobr>Longchao Yang<sup>2</sup>,</nobr>
+    <nobr>Yong Pan<sup>2</sup>,</nobr>
+    <nobr><a href="http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/">Jiwen Lu</a><sup>1</sup>
+  <br>
+      <nobr><sup>1</sup>Tsinghua University</nobr>
+      <nobr><sup>2</sup>Li Auto Inc.</nobr>
+  </address>
+   <!-- <div style="font-size: 170%;">CVPR 2023</div> -->
+  <address style="font-size: 120%;">
+	 <!-- <br> -->
+  <!-- [<a href="https://arxiv.org/abs/2412.04380"><b>Paper (Arxiv)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp; -->
+  <!-- [<a href="https://www.youtube.com/">Video(Youtube)</a>]&nbsp;&nbsp;&nbsp;&nbsp; -->
+  [<a href="https://github.com/zuosc19/QuadricFormer"><b>Code (GitHub)</b></a>]&nbsp;&nbsp;&nbsp;&nbsp;
+  <!-- [<a href="https://zhuanlan.zhihu.com">Post(Zhihu)</a>] -->
+  </address>
+<!--   <small>† Project Leader. ‡Corresponding author.</small> -->
+  <small>* Equal contribution. † Project Leader.</small>
+ </div>
+ </p>
+ </div>
+</div> <!-- end nd-pageheader -->
+
+<div class="container">
+
+
+<!-- <p align="center">
+  <video width="90%" controls>
+    <source src="assets/demo.mp4" type="video/mp4">
+  </video>
+</p> -->
+
+<p align="center">
+    <img src="assets/teaser.png" width="90%">
+</p>
+<p><b>Overview of our contributions.</b> 
+  We propose a probabilistic superquadric mixture model for efficient 3D occupancy prediction in autonomous driving scenes. 
+  Unlike previous methods based on dense voxels or ellipsoidal Gaussians, we leverage geometrically expressive superquadrics as scene primitives to effectively capture the diverse structures of real-world objects with fewer primitives.
+  Experiments on the nuScenes dataset show that QuadricFormer achieves state-of-the-art accuracy with superior efficiency compared to existing methods.
+</p>
+
+<style>
+  .flex-container {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: flex-start;
+  }
+  .flex-container p {
+    margin-left: 20px;
+  }
+</style>
+
+<h2>Geometrically Expressive Superquadrics</h2>
+<hr>
+<div class="flex-container">
+  <img src="assets/quadric.png" width="28%">
+  <p> 
+    Superquadrics are a powerful family of parameterized surfaces that can represent various geometric shapes. 
+    With just a few shape parameters, superquadrics can generate shapes ranging from basic ellipsoids, cuboids, and cylinders to more complex shapes with rounded corners, star-like profiles, and smooth transitions between them. 
+    This geometric flexibility allows them to capture complex structures with significantly fewer primitives than traditional representations (like ellipsoidal Gaussians), highlighting their superior modeling efficiency and expressive power for 3D scene understanding tasks.
+  </p>
+</div>
+
+<h2>Scene as Superquadrics for 3D Occupancy Prediction</h2><hr>
+<p> 
+  An efficient and expressive 3D representation is essential for 3D occupancy prediction.
+  Traditional voxel-based methods capture scene details but are computationally expensive and disregard scene sparsity.
+  Recent Gaussian-based approaches sparsely represent objects, but the inherent ellipsoidal shape prior of 3D Gaussians limits their ability to model diverse geometries, requiring many densely packed Gaussians for accuracy and compromising efficiency.
+  In contrast, we propose using geometrically expressive superquadrics for efficient object-centric representation, which can model complex structures in driving scenes with much fewer primitives.
+  <p>
+
+<p align="center">
+     <img src="assets/repre.png" width="70%">
+</p>
+
+<h2>Overall Framework of QuadricFormer</h2><hr>
+<p> 
+  We propose a probabilistic superquadric mixture model for efficient 3D occupancy prediction in autonomous driving scenes. 
+  Our QuadricFormer interprets each superquadric as an occupancy distribution with geometry priors and aggregates semantics via probabilistic mixture. 
+  Additionally, we design a pruning-and-splitting module to dynamically allocate superquadrics in occupied regions, enhancing modeling efficiency.
+  <p>
+
+<p align="center">
+     <img src="assets/framework.png" width="90%">
+</p>
+
+
+<!-- <h2>Results</h2><hr>
+
+<h4>Local Occupancy Prediction</h4><hr>
+
+We evaluate our local occupancy prediction module on the Occ-ScanNet dataset.
+The results indicate that our local occupancy prediction module outperforms state-of-the-art methods.
+
+<p></p>
+
+<p align="center">
+  <img src="img/local_tab.png" width="90%">
+</p>
+
+
+<h4>Embodied Occupancy Prediction</h4><hr>
+
+We splice the local occupancy obtained from our local occupancy prediction module to serve as the baseline and evaluate the performance of our EmbodiedOcc.
+It can be observed that our EmbodiedOcc exhibits superior prediction of the scene, which is achieved through the integration of different views.
+
+<p></p>
+
+<p align="center">
+  <img src="img/Embodied_Tab.png" width="90%">
+</p>
+
+<h4>Visualizations</h4><hr>
+
+We select two scenes to show the update of Gaussian memory and corresponding global occupancy with continuous exploration.
+As the Gaussians transition from random to increasingly ordered, the occupancy prediction of the current scene becomes more accurate and complete.
+
+<p></p>
+
+<p align="center">
+  <img src="img/global.png" width="90%">
+</p> -->
+
+
+
+<!-- <p>
+<div class="card">
+<h3 class="card-header">Bibtex</h3>
+<div class="card-block">
+<pre class="card-text clickselect">
+	@article{wu2024embodiedoccembodied3doccupancy,
+      title={EmbodiedOcc: Embodied 3D Occupancy Prediction for Vision-based Online Scene Understanding}, 
+      author={Yuqi Wu and Wenzhao Zheng and Sicheng Zuo and Yuanhui Huang and Jie Zhou and Jiwen Lu},
+      journal={arXiv preprint arXiv:2412.04380},
+      year={2024}
+}
+</pre>
+</div>
+</div>
+</p> -->
+
+
+<p align="right">
+     <a href="https://hanlab.mit.edu/projects/anycost-gan/">Website Template</a>
+</p>
+
+</div>
+</div> <!-- row -->
+
+</div> <!-- container -->
+
+<script>
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
+  
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight){
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight * 50+ "px";
+      } 
+      content.style.height = "550%";
+    });
+  }
+</script>
+
+</body>
+</html>
+
+
