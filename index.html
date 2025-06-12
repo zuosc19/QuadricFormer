@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<title>EmbodiedOcc</title>
+<title>QuadricFormer</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous"> -->
 <link href="bootstrap.min.css" rel="stylesheet">
@@ -154,7 +154,29 @@
      <img src="assets/framework.png" width="90%">
 </p>
 
+<h2>Experiments</h2><hr>
+<p> 
+  QuadricFormer consistently outperforms prior methods in both 3D semantic occupancy prediction and computational efficiency. 
+Specifically, our method achieves the highest mIoU (up to 21.11) and IoU (up to 32.13), surpassing all Gaussian-based approaches.
+In terms of efficiency, QuadricFormer significantly reduces both latency and memory usage. For similar or even fewer primitives (e.g., 1600 or 3200), our method achieves a latency as low as 162 ms and 2554 MB memory consumption, which are substantially lower than others.
+Notably, even when increasing the number of primitives in QuadricFormer to 12800, both latency and memory usage remain lower than those of Gaussian-based methods using only 1600 primitives. 
+This further highlights the superior efficiency of our approach for the complex structures in real-world applications.
+  <p>
 
+<p align="center">
+     <img src="assets/table.png" width="90%">
+</p>
+
+<h2>Visualizations</h2><hr>
+<p> 
+  We visualize the position distributions of scene primitives using 1600 superquadrics versus 6400 Gaussians. 
+Gaussian-based methods require a dense arrangement of Gaussians throughout the entire 3D space to model the scene, leading to numerous redundant Gaussians and low modeling efficiency. 
+In contrast, our superquadric-based method learns well-structured spatial arrangements, enabling it to effectively model the scene structure with significantly fewer primitives.
+  <p>
+
+<p align="center">
+     <img src="assets/pos.png" width="90%">
+</p>
 <!-- <h2>Results</h2><hr>
 
 <h4>Local Occupancy Prediction</h4><hr>
