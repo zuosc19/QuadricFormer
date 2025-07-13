@@ -139,6 +139,5 @@ work_dir/
 pretrain/
 debug.sh
 *.pth
-*.sh
 core.*
 .vscode/

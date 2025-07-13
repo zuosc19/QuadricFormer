@@ -1,9 +1,9 @@
 # QuadricFormer: Scene as Superquadrics for 3D Semantic Occupancy Prediction
-### Paper
+### [Paper](https://arxiv.org/abs/2506.10977)
 
 > QuadricFormer: Scene as Superquadrics for 3D Semantic Occupancy Prediction
 
-> [Sicheng Zuo<sup>\*</sup>](https://scholar.google.com/citations?user=11kh6C4AAAAJ&hl=en&oi=ao), [Wenzhao Zheng<sup>\*</sup>](https://wzzheng.net/)$\dagger$,  XiaoYong Han<sup>*</sup>, Longchao Yang, Yong Pan, [Jiwen Lu](http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/)
+> [Sicheng Zuo<sup>\*</sup>](https://scholar.google.com/citations?user=11kh6C4AAAAJ&hl=en&oi=ao), [Wenzhao Zheng<sup>\*</sup>](https://wzzheng.net/)$\dagger$,  Xiaoyong Han<sup>*</sup>, Longchao Yang, Yong Pan, [Jiwen Lu](http://ivg.au.tsinghua.edu.cn/Jiwen_Lu/)
 
 <sup>\*</sup> Equal contribution. $\dagger$ Project leader.
 
@@ -30,7 +30,7 @@ Follow instructions [HERE](docs/installation.md) to prepare the environment.
 
 3. Download pkl files [HERE](https://cloud.tsinghua.edu.cn/d/095a624d621b4aa98cf9/).
 
-4. Download the pretrained weights for the image backbone [HERE](https://github.com/zhiqi-li/storage/releases/download/v1.0/r101_dcn_fcos3d_pretrain.pth) and put it inside pretrain.
+4. Download the pretrained weights for the image backbone [HERE](https://cloud.tsinghua.edu.cn/f/00fea9c23eac448ea9f5/) and put it inside pretrain.
 
 **Folder structure**
 ```
@@ -95,13 +95,13 @@ Our work is inspired by these excellent open-sourced repos:
 [OccFormer](https://github.com/zhangyp15/OccFormer)
 [BEVFormer](https://github.com/fundamentalvision/BEVFormer)
 
-<!-- ## Citation
+## Citation
 
 If you find this project helpful, please consider citing the following paper:
 ```
 @article{zuo2025quadricformer,
     title={QuadricFormer: Scene as Superquadrics for 3D Semantic Occupancy Prediction},
     author={Zuo, Sicheng and Zheng, Wenzhao and Han, Xiaoyong and Yang, Longchao and Pan, Yong and Lu, Jiwen},
-    journal={arXiv preprint arXiv:},
+    journal={arXiv preprint arXiv:2506.10977},
     year={2025}
-} -->
+}
